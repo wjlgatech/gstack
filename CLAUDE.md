@@ -1,3 +1,7 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
 # gstack development
 
 ## Commands
@@ -10,6 +14,7 @@ bun run test:evals:all  # run ALL paid evals regardless of diff
 bun run test:e2e     # run E2E tests only (diff-based, ~$3.85/run max)
 bun run test:e2e:all # run ALL E2E tests regardless of diff
 bun run eval:select  # show which tests would run based on current diff
+bun test browse/test/snapshot.test.ts  # run a single test file
 bun run dev <cmd>    # run CLI in dev mode, e.g. bun run dev goto https://example.com
 bun run build        # gen docs + compile binaries
 bun run gen:skill-docs  # regenerate SKILL.md files from templates
@@ -79,12 +84,11 @@ gstack/
 ├── office-hours/    # /office-hours skill (YC Office Hours — startup diagnostic + builder brainstorm)
 ├── investigate/     # /investigate skill (systematic root-cause debugging)
 ├── retro/           # Retrospective skill (includes /retro global cross-project mode)
-├── bin/             # Standalone scripts (gstack-global-discover for cross-tool session discovery)
+├── bin/             # CLI utilities + standalone scripts (gstack-repo-mode, gstack-slug, gstack-config, gstack-global-discover)
 ├── document-release/ # /document-release skill (post-ship doc updates)
 ├── cso/             # /cso skill (OWASP Top 10 + STRIDE security audit)
 ├── design-consultation/ # /design-consultation skill (design system from scratch)
 ├── setup-deploy/    # /setup-deploy skill (one-time deploy config)
-├── bin/             # CLI utilities (gstack-repo-mode, gstack-slug, gstack-config, etc.)
 ├── setup            # One-time setup: build binary + symlink skills
 ├── SKILL.md         # Generated from SKILL.md.tmpl (don't edit directly)
 ├── SKILL.md.tmpl    # Template: edit this, run gen:skill-docs
@@ -282,3 +286,19 @@ The active skill lives at `~/.claude/skills/gstack/`. After making changes:
 3. Rebuild: `cd ~/.claude/skills/gstack && bun run build`
 
 Or copy the binary directly: `cp browse/dist/browse ~/.claude/skills/gstack/browse/dist/browse`
+
+---
+
+## Brand Design Systems
+
+Pre-built DESIGN.md files for Paul's brands. Load before generating any UI.
+
+- **love12xfuture** (content brand — YouTube, LinkedIn, newsletter):
+  `~/.claude/skills/gstack/design-md/love12xfuture/DESIGN.md`
+  Quick identity: Dark `#0d0f12`, Desert Bloom accent `#e8956d`, Cabinet Grotesk headlines.
+  Warm Futurist. Isaiah 35 energy. Never sterile, never shouty.
+
+- **Reference corpus** (55 real brand systems):
+  `https://github.com/VoltAgent/awesome-design-md/tree/main/design-md`
+  Use via `/design-consultation` Phase 0 lookup before any web research.
+
